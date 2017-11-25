@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title_block %}我的虚拟货币{% endblock %}
+{% block body_block %}
+<h1>虚拟货币列表</h1>
+<table class="table table-hover">
+    <thead class="thead-default">
+        <tr>
+            <th>种类</th>
+            <th>数量</th>
+            <th>价格（元）</th>
+            <th>小计（元）</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% if tokens %}
+        {% for token in tokens %}
+        <tr>
+            <th scope="row">{{ token.name }}</th>
+            <td>{{ token.amount }}</td>
+            <td>{{ token.price }}</td>
+            <td>{{ token.balance }}</td>
+        </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    {% endif %}
+    </tbody>
+</table>
+<hr/>
+<h4>合计金额：{{ total }} 元</h4>
+{% endblock %}

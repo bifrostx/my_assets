@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head_block %}
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet">
+{% endblock%}
+
+{% block body_block %}
+<div class="jumbotron">
+    <h1 align="center">Login</h1>
+<form class="form-signin" method="post" action="">
+    {% csrf_token %}
+    {% include 'includes/bs4_form.html' with form=form %}
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <input type="hidden" name="next" value="{{ next }}" />
+    <p>Forgot your password? <a href="{% url 'auth_password_reset' %}">Reset it</a>.<br />
+        Not a member? <a href="{% url 'registration_register' %}">Register</a>.</p>
+</form>
+</div>
+{% endblock %}
+
