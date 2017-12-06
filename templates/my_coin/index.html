@@ -34,5 +34,16 @@
     </tbody>
 </table>
 <hr/>
+<a href="#" id="add-token">增加货币</a>
+<form role="form" id="token_form" method="post" action="">
+{% csrf_token %}
+{% for hidden in form.hidden_fields %}
+    {{ hidden }}
+{% endfor %}
+<span style="color:red">{{ form.name.errors }}</span>
+</form>
 <h4>合计金额：{{ total }} 元</h4>
+{% endblock %}
+{% block foot_block %}
+<p>Copy right: bifrost</p>
 {% endblock %}
